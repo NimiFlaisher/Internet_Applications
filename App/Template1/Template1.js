@@ -3,3 +3,6 @@ $(".option").click(function () {
     $(this).addClass("active");
  });
  
+
+const opt = document.querySelector('options')
+opt.appendChild(document.creatElement)
