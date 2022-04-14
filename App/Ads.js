@@ -1,11 +1,10 @@
-
 const ads = [
     ad_1 = [
         id = "ad_1",
         template= "1",
-        photos = [2],
+        photos = ["./Images/platter-gfca0cb4d4_1920.jpg","./Images/urban-g4f67e2ab6_1920.jpg"],
         texts = [4],
-        time = [days = ["monday","wendsday"] , hours = [0600,1200], year = 2022] 
+        time = [days = ["monday","wendsday"] , hours = ["0600","1200]", year = "2022"] 
     ],
     ad_2 = [
         id = "ad_2",
@@ -34,5 +33,4 @@ const ads = [
         photos = [2],
         texts = [7],
         time = [""] //תוצג רק בימי שני,שלישי ורביעי, תוצג בשעות 1 בבוקר עד 23 בלילה, רק בחודש אפריל בשנת 2022
-    ]]
-    console.log(ads[0].photos)
+    ]]]
