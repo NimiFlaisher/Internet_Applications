@@ -11,7 +11,7 @@
             const ads = {
                 ad_1 : {
                     id : "ad_1",
-                    template: "1",
+                    template: "3",
                     photos : ["./Images/platter-gfca0cb4d4_1920.jpg","./Images/urban-g4f67e2ab6_1920.jpg"],
                     texts : ["This is an example",
                     "of an ad",
@@ -81,16 +81,17 @@
                     if ( (pWeekDay == 1 || pWeekDay == 2 || pWeekDay == 3 ) && (pHour >= 1 && pHour < 23) && (pYear == 2022) && (pMonth == 3) )
                         adArray.push("ad_5");
                     
-                    adArray.push("ad_1");
-                    adArray.push("ad_4");
                     adArray.push("ad_2");
+                    adArray.push("ad_1");
 
-                    if (adArray == null){
-                        adArray.push("ad_1");
-                        localStorage.setItem('adArray',adArray);
-                    }
-                    else
-                        localStorage.setItem('adArray',adArray);
+                    console.log(adArray)
+
+                    // if (adArray == null){
+                    //     adArray.push("ad_1");
+                    //     localStorage.setItem('adArray',adArray);
+                    // }
+                    // else
+                    //     localStorage.setItem('adArray',adArray);
                         
 
                 var currentAd = -1;
@@ -101,13 +102,13 @@
                         if (currentAd == adArray.length)
                             currentAd = 0;
                         localStorage.setItem('adNum',adArray[currentAd]);
-                        console.log(ads[adArray[currentAd]].template);
-                        var stringo = "./Template1/Template" + ads[adArray[currentAd]].template + ".html";
+                        var stringo = "./Template"+ ads[adArray[currentAd]].template +"/Template" + ads[adArray[currentAd]].template + ".html";
                         $( "#root" ).load(stringo);
                     },5000);
                 });
                 
-            })</script>
+            })
+        </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
