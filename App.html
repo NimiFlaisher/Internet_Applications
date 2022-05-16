@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script type ="text/javascript">
+            const pDate = new Date();
+            const pHour = pDate.getHours();
+            const pMonth = pDate.getMonth();
+            const pDay = pDate.getDay();
+            const pYear = pDate.getFullYear();
+            const ads = {
+                ad_1 : {
+                    id : "ad_1",
+                    template: "3",
+                    photos : ["./Images/platter-gfca0cb4d4_1920.jpg","./Images/urban-g4f67e2ab6_1920.jpg"],
+                    texts : ["This is an example",
+                    "of an ad",
+                    "that has",
+                    "four lines"
+                    ],
+                },
+                ad_2 : {
+                    id : "ad_2",
+                    template: "2",
+                    photos : ["./Images/ecommerce-g954d55082_1920.jpg"],
+                    texts : ["This is an example",
+                    "of an ad",
+                    "that has",
+                    "not one,",
+                    "not two,",
+                    "NOT THREE,",
+                    "this ad",
+                    "has",
+                    "TEN",
+                    "LINES!"], //10 text lines
+                },
+                ad_3 : {
+                    id : "ad_3",
+                    template: "3",
+                    photos : [],
+                    texts : [], //no text lines
+                },
+                ad_4 : {
+                    id : "ad_4",
+                    template: "1",
+                    photos : [],
+                    texts : ["This is an example of a",
+                        "two text lines ad"], //2 text lines
+                },
+                ad_5 : {
+                    id : "ad_5",
+                    template: "2",
+                    photos : ["./Images/shopping-mall-g9d167b359_1920.jpg","./Images/freestocks-_3Q3tsJ01nc-unsplash.jpg"],
+                    texts : ["Here we go",
+                        "we're starting off with a two line story",
+                        "but wait,",
+                        "there's more!",
+                        "we're already at like..",
+                        "six lines?",
+                        "make it a seven"], //7 text lines
+            }}
+            
+                console.table(ads);
+                $(document).ready(function(){
+                    var pDate = new Date();
+                    var pHour = pDate.getHours();
+                    var pMonth = pDate.getMonth();
+                    var pWeekDay = pDate.getDay();
+                    var pDay = pDate.getDate();
+                    var pYear = pDate.getFullYear();
+                    
+                    const adArray = [];
+                    
+                    if ( (pWeekDay == 1 || pWeekDay == 3) && (pHour >= 6 && pHour < 12) && (pYear == 2022) )
+                        adArray.push("ad_1");
+                    if ( (pWeekDay == 2 || pWeekDay == 3) && (pHour >= 10 && pHour < 16) && (pYear == 2022) && (pMonth == 2 || pMonth == 3) )
+                        adArray.push("ad_2");
+                    if ( (pHour >= 8 && pHour < 22) && (pYear == 2022) && (pMonth == 4 || (pMonth == 5 && pDay <= 15)) )
+                        adArray.push("ad_3");
+                    if ( (pWeekDay == 1) && (pHour >= 15 && pHour < 19) && (pYear == 2022) && ( (pMonth == 2 && pDay >= 29) || (pMonth == 3 && pDay <= 15)) )
+                        adArray.push("ad_4");
+                    if ( (pWeekDay == 1 || pWeekDay == 2 || pWeekDay == 3 ) && (pHour >= 1 && pHour < 23) && (pYear == 2022) && (pMonth == 3) )
+                        adArray.push("ad_5");
+                    
+                    adArray.push("ad_2");
+                    adArray.push("ad_1");
+
+                var currentAd = -1;
+                $("button#btn").click(function(){
+                    console.log('here')
+                    $( "#root" ).load( "./Loading/Loading.html" );
+                    var renew = setInterval(function(){
+                        currentAd++;
+                        if (currentAd == adArray.length)
+                            currentAd = 0;
+                        localStorage.setItem('adNum',adArray[currentAd]);
+                        var stringo = "./Template"+ ads[adArray[currentAd]].template +"/Template" + ads[adArray[currentAd]].template + ".html";
+                        $( "#root" ).load(stringo);
+                    },5000);
+                });
+                
+            })
+        </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h1>Welcome!</h1>
+        <button id="btn" type="button"><b>Start</b></button>
+    </div>
+</body>
+</html>
