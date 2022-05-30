@@ -1,25 +1,24 @@
 function addElements () {
-  if (ads[localStorage.getItem("adNum")].photos.length != 0)
-  for (let i = 0; i < ads[localStorage.getItem("adNum")].photos.length; i++) {
+  const getter = ads.find( a => a.id == localStorage.getItem("adNum"));
+  
+  if (getter.photos.length != 0)
+  for (let i = 0; i < getter.photos.length; i++) {
       const newDiv = document.createElement("div");
       newDiv.className= "icon-cards__item";
-      newDiv.style.backgroundImage ="url('"+ads[localStorage.getItem("adNum")].photos[i]+"')";
-      console.log(newDiv)
-      
+      newDiv.style.backgroundImage ="url('"+getter.photos[i]+"')";
       const currentDiv = document.getElementById("div1");
-      console.log(currentDiv)
       document.getElementById("container").insertBefore(newDiv, currentDiv);
   }
 
-  // if (ads[localStorage.getItem("adNum")].texts.length != 0)
-  // for (let i = 0; i < ads[localStorage.getItem("adNum")].texts.length; i++) {
-  //     const newDiv = document.createElement("span");
-  //     newDiv.className= "textLine";
-  //     newDiv.textContent = ads[localStorage.getItem("adNum")].texts[i];
+  if (getter.texts.length != 0)
+  for (let i = 0; i < getter.texts.length; i++) {
+      const newDiv = document.createElement("span");
+      newDiv.className= "textLine";
+      newDiv.textContent = getter.texts[i];
     
-  //     const currentDiv = document.getElementById("span1");
-  //     document.getElementById("text").insertBefore(newDiv, currentDiv);
-  // }
+      const currentDiv = document.getElementById("span1");
+      document.getElementById("text").insertBefore(newDiv, currentDiv);
+  }
 
 }
 
