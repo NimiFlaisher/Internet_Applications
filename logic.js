@@ -45,8 +45,12 @@
                         currentAd++;
                         if (currentAd == adArray.length)
                             currentAd = 0;
-                        localStorage.setItem('adNum',adArray[currentAd].id);
-                        var stringo = "./Template"+ adArray[currentAd].template +"/Template" + adArray[currentAd].template + ".html";
+                        if (adArray.length == 0)
+                            console.log("No ads to show")
+                            else {
+                                localStorage.setItem('adNum',adArray[currentAd].id);
+                                var stringo = "./Template"+ adArray[currentAd].template +"/Template" + adArray[currentAd].template + ".html";
+                            }
                         $( "#root" ).load(stringo);
                     },5000);
                 });
