@@ -5,7 +5,6 @@ app.use(express.static(__dirname + '/public'));
 const ads = require("./data");
 let data;
 
-
 const getData = (screenNumber) => { // << the ads array (with active screen number)
   return ads.filter((item) => item.screens.includes(screenNumber));
 };
