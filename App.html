@@ -30,17 +30,16 @@
                     
                     ads.forEach( ad => {
                         if (
-                            new Date(ads[i].dates.range[0]) <= Date.pDate() && new Date(ads[i].dates.range[1]) >= Date.pDate()
+                            new Date(ad.dates.range[0]) <= Date.pDate() && new Date(ad.dates.range[1]) >= Date.pDate()
                         ) {
-                            if (Object.keys(ads[i].daysAndHours).includes(pWeekDay.toString()))
+                            if (Object.keys(ad.daysAndHours).includes(pWeekDay.toString()))
                             {
                                 if (
-                                    ads[i].daysAndHours[pWeekDay][0] <= pHour &&
-                                    ads[i].daysAndHours[pWeekDay][1] >= pHour
+                                    ad.daysAndHours[pWeekDay][0] <= pHour &&
+                                    ad.daysAndHours[pWeekDay][1] >= pHour
                                 ) 
-                                adArray.push(ads[i]);
+                                adArray.push(ad);
                             }
-
                         }
                     })
 
