@@ -6,8 +6,7 @@
             let ads = [];
             fetch("/data")
             .then((data) => {
-            console.log(data);
-            return data.json();
+                return data.json();
             })
             .then((res) => {
             console.log(res);
@@ -19,7 +18,6 @@
             const pDay = pDate.getDay();
             const pYear = pDate.getFullYear();
 
-            
                 $(document).ready(function(){
                     var pDate = new Date();
                     var pHour = pDate.getHours();
@@ -30,17 +28,22 @@
                     
                     const adArray = [];
                     
-                    if ( (pWeekDay == 1 || pWeekDay == 3) && (pHour >= 6 && pHour < 12) && (pYear == 2022) )
-                        adArray.push("ad_1");
-                    if ( (pWeekDay == 2 || pWeekDay == 3) && (pHour >= 10 && pHour < 16) && (pYear == 2022) && (pMonth == 2 || pMonth == 3) )
-                        adArray.push("ad_2");
-                    if ( (pHour >= 8 && pHour < 22) && (pYear == 2022) && (pMonth == 4 || (pMonth == 5 && pDay <= 15)) )
-                        adArray.push("ad_3");
-                    if ( (pWeekDay == 1) && (pHour >= 15 && pHour < 19) && (pYear == 2022) && ( (pMonth == 2 && pDay >= 29) || (pMonth == 3 && pDay <= 15)) )
-                        adArray.push("ad_4");
-                    if ( (pWeekDay == 1 || pWeekDay == 2 || pWeekDay == 3 ) && (pHour >= 1 && pHour < 23) && (pYear == 2022) && (pMonth == 3) )
-                        adArray.push("ad_5");
-                    
+                    ads.forEach( ad => {
+                        if (
+                            new Date(ads[i].dates.range[0]) <= Date.pDate() && new Date(ads[i].dates.range[1]) >= Date.pDate()
+                        ) {
+                            if (Object.keys(ads[i].daysAndHours).includes(pWeekDay.toString()))
+                            {
+                                if (
+                                    ads[i].daysAndHours[pWeekDay][0] <= pHour &&
+                                    ads[i].daysAndHours[pWeekDay][1] >= pHour
+                                ) 
+                                adArray.push(ads[i]);
+                            }
+
+                        }
+                    })
+
                     adArray.push("ad_2");
                     adArray.push("ad_1");
 
